@@ -1,0 +1,43 @@
+{
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "node_modules": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+    "[json]": {
+      "editor.formatOnSave": true
+    },
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.reportStyleChecksAsWarnings": false,
+  
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "importSorter.importStringConfiguration.quoteMark": "single",
+    "importSorter.sortConfiguration.importMembers.order": "lowercaseLast",
+  
+    "importSorter.sortConfiguration.customOrderingRules.defaultOrderLevel": 100,
+    "importSorter.sortConfiguration.customOrderingRules.rules": [
+      {
+        "type": "importMember",
+        "regex": "^$",
+        "orderLevel": 10,
+        "disableSort": true
+      },
+      {
+        "regex": "^@angular",
+        "orderLevel": 20
+      },
+      // Add 3rd party libs here
+      {
+        "regex": "rxjs",
+        "orderLevel": 30
+      },
+      {
+        "regex": "^[.]",
+        "orderLevel": 110
+      }
+    ],
+  }
+  

@@ -1,0 +1,10 @@
+{
+  "$schema": "@angular-devkit/architect/src/builders-schema.json",
+  "builders": {
+    "files": {
+      "class": "./src",
+      "schema": "./src/schema.json",
+      "description": "Builder that creates version files from package.json"
+    }
+  }
+}

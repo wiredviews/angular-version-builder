@@ -1,0 +1,7 @@
+*.log
+.idea
+.DS_Store
+node_modules
+src/index.d.ts
+src/index.js
+*.tgz

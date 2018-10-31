@@ -1,0 +1,33 @@
+{
+  "name": "@wiredviews/angular-version-builder",
+  "version": "0.1.0",
+  "description": "Version Files builder for Angular build facade",
+  "keywords": [
+    "angular",
+    "devkit",
+    "typescript",
+    "angular-cli"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "build": "tsc && npm pack"
+  },
+  "author": "Sean G. Wright <sean@wiredviews.com> (https://www.wiredviews.com)",
+  "license": "MIT",
+  "dependencies": {
+    "pjson": "1.0.9"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "0.10.3",
+    "@angular/cli": "7.0.3",
+    "@angular/compiler": "7.0.1",
+    "@angular/compiler-cli": "7.0.1",
+    "@types/node": "10.12.1",
+    "prettier": "1.14.3",
+    "typescript": "3.1.4"
+  },
+  "peerDependencies": {
+    "@angular-devkit/build-angular": ">=0.10.3"
+  },
+  "builders": "builders.json"
+}

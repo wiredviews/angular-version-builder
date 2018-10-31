@@ -1,0 +1,17 @@
+{
+  "id": "VersionFilesBuilderSchema",
+  "title": "Version Files builder",
+  "description": "Version Files builder options",
+  "properties": {
+    "tsOutputPath": {
+      "type": "string",
+      "description": "Output path for the typescript module containing the application version",
+      "default": "environments/version.ts"
+    },
+    "jsonOutputPath": {
+      "type": "string",
+      "description": "Output path for the json file containing the application version",
+      "default": "version.json"
+    }
+  }
+}

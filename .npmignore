@@ -1,0 +1,6 @@
+.vscode/
+.gitignore
+.prettierrc
+tsconfig.json
+*.tgz
+src/index.ts
