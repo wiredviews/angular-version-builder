@@ -23,8 +23,12 @@ export default class VersionFilesBuilder
 
     const { jsonOutputPath, tsOutputPath } = builderConfig.options;
 
-    const tsFilepath = `${getSystemPath(root)}/src/${tsOutputPath}`;
-    const jsonFilepath = `${getSystemPath(root)}/src/${jsonOutputPath}`;
+    const tsFilepath = `${getSystemPath(
+      builderConfig.sourceRoot,
+    )}/${tsOutputPath}`;
+    const jsonFilepath = `${getSystemPath(
+      builderConfig.sourceRoot,
+    )}/${jsonOutputPath}`;
 
     const moduleSrc = `export const version = '${version}';${EOL}`;
 
