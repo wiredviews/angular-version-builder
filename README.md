@@ -21,7 +21,7 @@ The developer can then poll against the `version.json` file on the server and co
 1. In the root of your Angular application:
 
    ```bash
-   npm i -D @angular-builders/timestamp
+   npm i -D @wiredviews/angular-version-builder
    ```
 
 2. In your _angular.json_ add the following to _architect_ section of the relevant project:
@@ -36,10 +36,14 @@ The developer can then poll against the `version.json` file on the server and co
    },
    ```
 
-3. Run: `ng run [relevant-project]:versionFiles`
+3. Run: `ng run [relevant-project]:version-files`
    Where _[relevant-project]_ is the project to which you've added the target
 
 ## Options
 
 - `tsOutputPath` - path to the typescript module containing your application version which you can import into your application to be deployed with it
 - `jsonOutputPath` - path to the json file that contains the your application version that is deployed on the server
+
+## Credits
+
+Inspiration from [https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01](https://medium.com/dailyjs/angular-cli-6-under-the-hood-builders-demystified-f0690ebcf01)
