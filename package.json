@@ -1,6 +1,9 @@
 {
   "name": "@wiredviews/angular-version-builder",
-  "version": "0.1.1",
+  "version": "0.2.2",
+  "repository": {
+    "url": "https://github.com/wiredviews/angular-version-builder"
+  },
   "description": "Version Files builder for Angular build facade",
   "keywords": [
     "angular",
@@ -10,7 +13,8 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "build": "tsc && npm pack"
+    "build": "tsc && npm pack",
+    "tsc": "tsc"
   },
   "author": "Sean G. Wright <sean@wiredviews.com> (https://www.wiredviews.com)",
   "license": "MIT",
@@ -18,16 +22,16 @@
     "pjson": "1.0.9"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.10.3",
-    "@angular/cli": "7.0.3",
-    "@angular/compiler": "7.0.1",
-    "@angular/compiler-cli": "7.0.1",
+    "@angular-devkit/build-angular": "0.800.2",
+    "@angular/cli": "8.0.2",
+    "@angular/compiler": "8.0.0",
+    "@angular/compiler-cli": "8.0.0",
     "@types/node": "10.12.1",
-    "prettier": "1.14.3",
-    "typescript": "3.1.4"
+    "prettier": "1.18.2",
+    "typescript": "3.4.5"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": ">=0.10.3"
+    "@angular-devkit/build-angular": ">=0.800.2"
   },
   "builders": "builders.json"
 }

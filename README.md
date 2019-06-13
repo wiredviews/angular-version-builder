@@ -16,6 +16,11 @@ The `version.json` file should be deployed with the application assets to the se
 
 The developer can then poll against the `version.json` file on the server and compare its version to the version exposed by the `version.ts` in the application. If they differ then the application knows an update is available and can prompt the user or reload the app.
 
+## Requirements
+
+v0.1.x works with Angular CLI < 8.0.0
+v0.2.x works with Angular CLI >= 8.0.0
+
 ## Usage
 
 1. In the root of your Angular application:
@@ -30,8 +35,8 @@ The developer can then poll against the `version.json` file on the server and co
    "version-files": {
      "builder": "@wiredviews/angular-version-builder:files",
      "options": {
-        "tsOutputPath": "environments/version.ts",
-        "jsonOutputPath": "version.json"
+        "tsOutputPath": "src/environments/version.ts",
+        "jsonOutputPath": "src/version.json"
      }
    },
    ```
@@ -40,6 +45,8 @@ The developer can then poll against the `version.json` file on the server and co
    Where _[relevant-project]_ is the project to which you've added the target
 
 ## Options
+
+Both of these values are relative to the workspace root
 
 - `tsOutputPath` - path to the typescript module containing your application version which you can import into your application to be deployed with it
 - `jsonOutputPath` - path to the json file that contains the your application version that is deployed on the server

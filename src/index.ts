@@ -1,9 +1,7 @@
-import {
-    BuildEvent, Builder, BuilderConfiguration, BuilderContext
-} from '@angular-devkit/architect';
-import { getSystemPath } from '@angular-devkit/core';
+import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/architect';
+import { getSystemPath, json, normalize } from '@angular-devkit/core';
 
-import { Observable, bindNodeCallback, forkJoin, of, throwError } from 'rxjs';
+import { Observable, bindNodeCallback, forkJoin, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { writeFile } from 'fs';
@@ -12,44 +10,36 @@ import { version } from 'pjson';
 
 import { VersionFilesBuilderSchema } from './schema';
 
-export default class VersionFilesBuilder
-  implements Builder<VersionFilesBuilderSchema> {
-  constructor(private context: BuilderContext) {}
+export function createVersionFile(
+  { tsOutputPath, jsonOutputPath }: VersionFilesBuilderSchema,
+  { workspaceRoot, logger }: BuilderContext,
+): Observable<BuilderOutput> {
+  const root = workspaceRoot;
 
-  run(
-    builderConfig: BuilderConfiguration<Partial<VersionFilesBuilderSchema>>,
-  ): Observable<BuildEvent> {
-    const root = this.context.workspace.root;
+  const tsFilepath = getSystemPath(normalize(`${root}/${tsOutputPath}`));
+  const jsonFilepath = getSystemPath(normalize(`${root}/${jsonOutputPath}`));
 
-    const { jsonOutputPath, tsOutputPath } = builderConfig.options;
+  const moduleSrc = `export const version = '${version}';${EOL}`;
 
-    const tsFilepath = `${getSystemPath(
-      builderConfig.sourceRoot,
-    )}/${tsOutputPath}`;
-    const jsonFilepath = `${getSystemPath(
-      builderConfig.sourceRoot,
-    )}/${jsonOutputPath}`;
+  const jsonSrc = JSON.stringify({ version });
 
-    const moduleSrc = `export const version = '${version}';${EOL}`;
+  const writeFileObservable = bindNodeCallback(writeFile);
 
-    const jsonSrc = JSON.stringify({ version });
+  return forkJoin(
+    writeFileObservable(tsFilepath, moduleSrc),
+    writeFileObservable(jsonFilepath, jsonSrc),
+  ).pipe(
+    tap(() => logger.info(`Version files created with version ${version}`)),
+    map(() => ({ success: true })),
+    catchError(e => {
+      logger.error('Failed create version files');
+      logger.error(JSON.stringify(e));
 
-    const writeFileObservable = bindNodeCallback(writeFile);
-
-    return forkJoin(
-      writeFileObservable(tsFilepath, moduleSrc),
-      writeFileObservable(jsonFilepath, jsonSrc),
-    ).pipe(
-      map(() => ({ success: true })),
-      tap(() =>
-        this.context.logger.info(
-          `Version files created with version ${version}`,
-        ),
-      ),
-      catchError(e => {
-        this.context.logger.error('Failed create version files', e);
-        return of({ success: false });
-      }),
-    );
-  }
+      return of({ success: false });
+    }),
+  );
 }
+
+export default createBuilder<json.JsonObject & VersionFilesBuilderSchema>(
+  createVersionFile,
+);
