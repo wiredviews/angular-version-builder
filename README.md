@@ -20,6 +20,7 @@ The developer can then poll against the `version.json` file on the server and co
 
 v0.1.x works with Angular CLI < 8.0.0
 v0.2.x works with Angular CLI >= 8.0.0
+v0.3.x works with Angular CLI >= 12.0.0
 
 ## Usage
 

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "VersionFilesBuilderSchema",
+  "$id": "VersionFilesBuilderSchema",
   "title": "Version Files builder",
   "description": "Version Files builder options",
   "properties": {
