@@ -22,16 +22,16 @@
     "pjson": "1.0.9"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.800.2",
-    "@angular/cli": "8.0.2",
-    "@angular/compiler": "8.0.0",
-    "@angular/compiler-cli": "8.0.0",
+    "@angular-devkit/build-angular": "12.2.15",
+    "@angular/cli": "12.2.15",
+    "@angular/compiler": "12.2.15",
+    "@angular/compiler-cli": "12.2.15",
     "@types/node": "10.12.1",
     "prettier": "1.18.2",
-    "typescript": "3.4.5"
+    "typescript": "4.5.5"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": ">=0.800.2"
+    "@angular-devkit/build-angular": ">=12.0.0"
   },
   "builders": "builders.json"
 }
